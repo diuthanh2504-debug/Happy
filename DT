@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+
+<meta charset="UTF-8">
+
+<title>Loading...</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+background:#111;
+color:white;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+text-align:center;
+}
+
+#text{
+font-size:35px;
+padding:20px;
+}
+
+button{
+margin-top:30px;
+padding:15px 35px;
+font-size:22px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background:#ff4081;
+color:white;
+display:none;
+}
+
+.heart{
+position:fixed;
+font-size:25px;
+animation:fly 4s linear forwards;
+}
+
+@keyframes fly{
+0%{
+transform:translateY(0) scale(0);
+opacity:1;
+}
+100%{
+transform:translateY(-800px) scale(2);
+opacity:0;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div>
+
+<div id="text">🔄 Đang kiểm tra tài khoản Messenger...</div>
+
+<button onclick="love()">
+😄 Bấm nhận may mắn
+</button>
+
+</div>
+
+<script>
+
+let t=document.getElementById("text");
+
+setTimeout(()=>{
+t.innerHTML="⚠️ Phát hiện tài khoản quá dễ thương...";
+},2000);
+
+setTimeout(()=>{
+t.innerHTML="🤔 Đang xác minh...";
+},4500);
+
+setTimeout(()=>{
+
+confetti({
+particleCount:250,
+spread:180
+});
+
+document.body.style.background="#fff5f8";
+
+t.style.color="#ff1493";
+
+t.innerHTML=`
+<h1>❤️I love u so so so much!</h1>
+
+<h2>🌞  Chúc hôm nay gặp toàn chuyện vui 🌞 </h2>
+
+`;
+
+document.querySelector("button").style.display="inline-block";
+
+},7000);
+
+function love(){
+
+confetti({
+particleCount:400,
+spread:360
+});
+
+for(let i=0;i<120;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.top="100vh";
+
+h.style.fontSize=(20+Math.random()*40)+"px";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},4000);
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
